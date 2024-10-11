@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>人民365 - 为人民服务的公共导航平台</title>
+    <style>
+        :root {
+            --primary-color: #d32f2f;
+            --secondary-color: #ffcdd2;
+            --text-color: #212121;
+            --background-color: #f5f5f5;
+        }
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            font-family: 'Noto Sans SC', sans-serif;
+            background-color: var(--background-color);
+            color: var(--text-color);
+        }
+        #page-container {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        main {
+            flex: 1 0 auto;
+        }
+        footer {
+            flex-shrink: 0;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 20px 0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .slogan {
+            font-size: 16px;
+            opacity: 0.9;
+        }
+        main {
+            padding: 40px 0;
+        }
+        .section {
+            margin-bottom: 40px;
+        }
+        .section-title {
+            color: var(--primary-color);
+            font-size: 24px;
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        .card-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .card {
+            flex: 1 1 300px; /* 让卡片可以灵活伸缩,但最小宽度为300px */
+            background-color: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-decoration: none; /* 移除默认的下划线 */
+            color: inherit; /* 使用继承的文本颜色 */
+            display: block; /* 使整个卡片可点击 */
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+        }
+        .card-title {
+            color: var(--primary-color);
+            font-size: 18px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        .card-title svg {
+            margin-right: 8px;
+            width: 24px;
+            height: 24px;
+        }
+        .card-description {
+            font-size: 14px;
+            color: #666;
+        }
+        .more-link {
+            text-align: right;
+            margin-top: 10px;
+        }
+        .more-link a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-size: 16px;
+        }
+        footer {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 40px 0;
+            margin-top: 40px;
+        }
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+        }
+        .footer-section h3 {
+            font-size: 18px;
+            margin-bottom: 15px;
+        }
+        .footer-section p {
+            font-size: 14px;
+            line-height: 1.6;
+        }
+        .footer-section a {
+            color: var(--secondary-color);
+            text-decoration: none;
+        }
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            .slogan {
+                margin-top: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="page-container">
+        <header>
+            <div class="container header-content">
+                <div class="logo">人民365</div>
+                <div class="slogan">人民的每一天，我们都在</div>
+            </div>
+        </header>
+
+        <main class="container">
+            <section class="section">
+                <h2 class="section-title">民生服务</h2>
+                <div class="card-container">
+                    <a href="#" class="card">
+                        <h3 class="card-title">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-briefcase"><rect width="20" height="14" x="2" y="7" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
+                            工作就业
+                        </h3>
+                        <p class="card-description">提供就业指导、职业培训、劳动权益保护等相关资源。</p>
+                    </a>
+                    <a href="#" class="card">
+                        <h3 class="card-title">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-stethoscope"><path d="M4.8 2.3A.3.3 0 1 0 5 2H4a2 2 0 0 0-2 2v5a6 6 0 0 0 6 6v0a6 6 0 0 0 6-6V4a2 2 0 0 0-2-2h-1a.2.2 0 1 0 .3.3"></path><path d="M8 15v1a6 6 0 0 0 6 6v0a6 6 0 0 0 6-6v-4"></path><circle cx="20" cy="10" r="2"></circle></svg>
+                            医疗健康
+                        </h3>
+                        <p class="card-description">提供医疗保险、公共卫生、疾病预防等相关信息。</p>
+                    </a>
+                </div>
+                <div class="more-link">
+                    <a href="#">查看更多 ></a>
+                </div>
+            </section>
+
+            <section class="section">
+                <h2 class="section-title">专业资讯</h2>
+                <div class="card-container">
+                    <a href="#" class="card">
+                        <h3 class="card-title">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-scale"><path d="m16 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"></path><path d="m2 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"></path><path d="M7 21h10"></path><path d="M12 3v18"></path><path d="M3 7h2c2 0 5-1 7-2 2 1 5 2 7 2h2"></path></svg>
+                            法律
+                        </h3>
+                        <p class="card-description">涉及法律行业的专业性网站合集</p>
+                    </a>
+                    <a href="#" class="card">
+                        <h3 class="card-title">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-bar-chart"><line x1="12" y1="20" x2="12" y2="10"></line><line x1="18" y1="20" x2="18" y2="4"></line><line x1="6" y1="20" x2="6" y2="16"></line></svg>
+                            统计
+                        </h3>
+                        <p class="card-description">涉及统计行业的专业性网站合集</p>
+                    </a>
+                </div>
+                <div class="more-link">
+                    <a href="#">浏览更多 ></a>
+                </div>
+            </section>
+
+            <section class="section">
+                <h2 class="section-title">最新动态</h2>
+                <div class="card-container">
+                    <a href="#" class="card">
+                        <h3 class="card-title">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-graduation-cap"><path d="M22 10v6M2 10l10-5 10 5-10 5z"></path><path d="M6 12v5c3 3 9 3 12 0v-5"></path></svg>
+                            教育部官网
+                        </h3>
+                        <p class="card-description">2024年高考改革最新通知</p>
+                    </a>
+                    <a href="#" class="card">
+                        <h3 class="card-title">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-building"><rect width="16" height="20" x="4" y="2" rx="2" ry="2"></rect><path d="M9 22v-4h6v4"></path><path d="M8 6h.01"></path><path d="M16 6h.01"></path><path d="M12 6h.01"></path><path d="M12 10h.01"></path><path d="M12 14h.01"></path><path d="M16 10h.01"></path><path d="M16 14h.01"></path><path d="M8 10h.01"></path><path d="M8 14h.01"></path></svg>
+                            社保局
+                        </h3>
+                        <p class="card-description">养老金调整方案公布</p>
+                    </a>
+                </div>
+                <div class="more-link">
+                    <a href="#">了解更多 ></a>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <div class="container footer-content">
+                <div class="footer-section">
+                    <h3>关于人民365</h3>
+                    <p>人民的每一天，我们都在。致力于为公众提供全天候的免费公益资源导航服务，让每个人都能便捷地获取所需的公共服务。</p>
+                </div>
+                <div class="footer-section">
+                    <h3>联系我们</h3>
+                    <p>邮箱：contact@renmin365.com</p>
+                    <p>微信：zane12580</p>
+                </div>
+                <div class="footer-section">
+                    <h3>友情链接</h3>
+                    <p><a href="#">StyleSwift</a></p>
+                    <p><a href="#">LLMGPUHelper</a></p>
+                </div>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>
