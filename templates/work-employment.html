@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>工作就业 - 人民365</title>
+    <style>
+        :root {
+            --primary-color: #d32f2f;
+            --secondary-color: #f5f5f5;
+            --text-color: #333;
+            --background-color: #fff;
+        }
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            font-family: 'Noto Sans SC', sans-serif;
+            background-color: var(--background-color);
+            color: var(--text-color);
+        }
+        #page-container {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        main {
+            flex: 1 0 auto;
+        }
+        footer {
+            flex-shrink: 0;
+        }
+        .container {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 20px 0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .slogan {
+            font-size: 16px;
+            opacity: 0.9;
+        }
+        main {
+            padding: 40px 0;
+        }
+        .page-title {
+            color: var(--primary-color);
+            font-size: 32px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .category-description {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 40px;
+            line-height: 1.6;
+        }
+        .subcategory-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        .subcategory-card {
+            background-color: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        .subcategory-card:hover {
+            transform: translateY(-5px);
+        }
+        .subcategory-title {
+            color: var(--primary-color);
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+        .subcategory-description {
+            font-size: 14px;
+            line-height: 1.5;
+        }
+        .resource-list {
+            margin-top: 20px;
+        }
+        .resource-list li {
+            margin-bottom: 10px;
+        }
+        .resource-list a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+        .resource-list a:hover {
+            text-decoration: underline;
+        }
+        footer {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 40px 0;
+            margin-top: 40px;
+        }
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+        }
+        .footer-section h3 {
+            font-size: 18px;
+            margin-bottom: 15px;
+        }
+        .footer-section p {
+            font-size: 14px;
+            line-height: 1.6;
+        }
+        .footer-section a {
+            color: var(--secondary-color);
+            text-decoration: none;
+        }
+        .filter-section {
+            margin-bottom: 30px;
+        }
+        .filter-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        .filter-label {
+            font-weight: bold;
+            margin-right: 10px;
+        }
+        select, input {
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .tag-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .tag-button {
+            background-color: var(--secondary-color);
+            color: var(--primary-color);
+            border: none;
+            padding: 5px 10px;
+            border-radius: 20px;
+            cursor: pointer;
+        }
+        .content-section {
+            margin-bottom: 40px;
+        }
+        .section-title {
+            color: var(--primary-color);
+            font-size: 24px;
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        .resource-card {
+            background-color: white;
+            border: 1px solid #eee;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        .resource-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        .resource-title {
+            color: var(--primary-color);
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+        .resource-description {
+            margin-bottom: 15px;
+        }
+        .resource-link {
+            color: #2196f3;
+            text-decoration: none;
+        }
+        .resource-link:hover {
+            text-decoration: underline;
+        }
+        .resource-card.resource-link {
+            display: block;
+            text-decoration: none;
+            color: inherit;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .resource-card.resource-link:hover,
+        .resource-card.resource-link:focus {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        .filter-section {
+            margin-bottom: 20px;
+        }
+        .filter-toggle {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            width: 100%;
+            text-align: left;
+            font-size: 16px;
+        }
+        .filter-icon {
+            float: right;
+        }
+        .filter-content {
+            display: none;
+            background-color: #f9f9f9;
+            padding: 15px;
+            border: 1px solid #ddd;
+        }
+        .filter-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+        .filter-group {
+            flex: 1;
+            min-width: 200px;
+        }
+        .filter-label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        .filter-select {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        .filter-actions {
+            text-align: right;
+        }
+        .apply-filter {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+        .active-filters {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        .filter-tag {
+            background-color: #e0e0e0;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+        }
+        .remove-filter {
+            margin-left: 5px;
+            cursor: pointer;
+        }
+        @media (max-width: 768px) {
+            .filter-row {
+                flex-direction: column;
+            }
+            
+            .filter-group {
+                width: 100%;
+            }
+        }
+        .toggle-switch {
+            position: relative;
+            width: 150px;
+            display: inline-block;
+            vertical-align: middle;
+            user-select: none;
+            margin-bottom: 20px;
+        }
+        .toggle-switch-checkbox {
+            display: none;
+        }
+        .toggle-switch-label {
+            display: block;
+            overflow: hidden;
+            cursor: pointer;
+            border: 2px solid var(--primary-color);
+            border-radius: 20px;
+        }
+        .toggle-switch-inner {
+            display: block;
+            width: 200%;
+            margin-left: -100%;
+            transition: margin 0.3s ease-in 0s;
+        }
+        .toggle-switch-inner:before,
+        .toggle-switch-inner:after {
+            display: block;
+            float: left;
+            width: 50%;
+            height: 34px;
+            padding: 0;
+            line-height: 34px;
+            font-size: 14px;
+            color: white;
+            font-weight: bold;
+            box-sizing: border-box;
+        }
+        .toggle-switch-inner:before {
+            content: attr(data-yes);
+            text-transform: uppercase;
+            padding-left: 10px;
+            background-color: var(--primary-color);
+            color: #fff;
+        }
+        .toggle-switch-inner:after {
+            content: attr(data-no);
+            text-transform: uppercase;
+            padding-right: 10px;
+            background-color: #fff;
+            color: var(--primary-color);
+            text-align: right;
+        }
+        .toggle-switch-switch {
+            display: block;
+            width: 18px;
+            margin: 8px;
+            background: #fff;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            right: 112px;
+            border: 2px solid var(--primary-color);
+            border-radius: 20px;
+            transition: all 0.3s ease-in 0s;
+        }
+        .toggle-switch-checkbox:checked + .toggle-switch-label .toggle-switch-inner {
+            margin-left: 0;
+        }
+        .toggle-switch-checkbox:checked + .toggle-switch-label .toggle-switch-switch {
+            right: 0px;
+        }
+        .content-wrapper {
+            display: flex;
+            min-height: 500px; /* 设置一个最小高度 */
+            max-height: 700px;
+        }
+        .content-section {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        .resource-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            flex: 1;
+        }
+        .resource-card {
+            flex: 1 1 calc(50% - 10px);
+            display: flex;
+            flex-direction: column;
+        }
+        .resource-description {
+            flex: 1;
+        }
+    </style>
+</head>
+<body>
+    <div id="page-container">
+        <header>
+            <div class="container header-content">
+                <div class="logo">人民365</div>
+                <div class="slogan">人民的每一天，我们都在</div>
+            </div>
+        </header>
+
+        <main class="container">
+            <h1 class="page-title">工作就业</h1>
+            
+            <div class="toggle-switch">
+                <input
+                    type="checkbox"
+                    id="content-toggle"
+                    class="toggle-switch-checkbox"
+                />
+                <label class="toggle-switch-label" for="content-toggle">
+                    <span class="toggle-switch-inner" data-yes="入口合集" data-no="经验帖子"></span>
+                    <span class="toggle-switch-switch"></span>
+                </label>
+            </div>
+            
+            <div class="filter-section">
+                <button id="filter-toggle" class="filter-toggle">
+                    筛选 <span class="filter-icon">▼</span>
+                </button>
+                <div id="filter-content" class="filter-content">
+                    <div class="filter-row">
+                        <div class="filter-group">
+                            <label for="region-select" class="filter-label">地区:</label>
+                            <select id="region-select" class="filter-select">
+                                <option value="">全国</option>
+                                <option value="beijing">北京</option>
+                                <option value="shanghai">上海</option>
+                                <!-- 添加更多地区选项 -->
+                            </select>
+                        </div>
+                        <div class="filter-group">
+                            <label for="tag-select" class="filter-label">标签:</label>
+                            <select id="tag-select" class="filter-select">
+                                <option value="">选择标签</option>
+                                <option value="就业">就业</option>
+                                <option value="培训">培训</option>
+                                <option value="创业">创业</option>
+                                <option value="实习">实习</option>
+                                <option value="兼职">兼职</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="filter-actions">
+                        <button id="apply-filter" class="apply-filter">应用筛选</button>
+                    </div>
+                </div>
+            </div>
+            <div id="active-filters" class="active-filters"></div>
+
+            <div class="content-wrapper">
+                <section class="content-section" id="job-info">
+                    <h2 class="section-title">求职信息</h2>
+                    <div class="resource-grid">
+                        <a href="#" class="resource-card resource-link">
+                            <h3 class="resource-title">全国招聘信息网</h3>
+                            <p class="resource-description">提供全国范围内的各类职位信息，包括企业招聘、政府招考等。</p>
+                        </a>
+                        <a href="#" class="resource-card resource-link">
+                            <h3 class="resource-title">高校毕业生就业服务平台</h3>
+                            <p class="resource-description">专为应届毕业生提供的就业信息、政策解读和求职指导。</p>
+                        </a>
+                    </div>
+                    <h2 class="section-title">劳动保障</h2>
+                    <div class="resource-grid">
+                        <a href="#" class="resource-card resource-link">
+                            <h3 class="resource-title">全国劳动保障监察</h3>
+                            <p class="resource-description">提供劳动保障监察相关的信息和服务。</p>
+                        </a>
+                        <!-- 可以添加更多求职信息资源 -->
+                    </div>
+                </section>
+
+                <section class="content-section" id="experience-posts" style="display: none;">
+                    <h2 class="section-title">经验帖子</h2>
+                    <div class="resource-grid">
+                        <div class="resource-card">
+                            <h3 class="resource-title">如何打赢劳动仲裁</h3>
+                            <p class="resource-description">分享我打赢劳动仲裁的亲身经历和经验。</p>
+                        </div>
+                        <div class="resource-card">
+                            <h3 class="resource-title">职场新人生存指南</h3>
+                            <p class="resource-description">为刚入职场的新人提供一些实用的建议和技巧。</p>
+                        </div>
+                        <!-- 可以添加更多经验帖子 -->
+                    </div>
+                </section>
+            </div>
+        </main>
+
+        <footer>
+            <div class="container footer-content">
+                <div class="footer-section">
+                    <h3>关于人民365</h3>
+                    <p>人民的每一天，我们都在。致力于为公众提供全天候的免费公益资源导航服务，让每个人都能便捷地获取所需的公共服务。</p>
+                </div>
+                <div class="footer-section">
+                    <h3>联系我们</h3>
+                    <p>邮箱：contact@renmin365.com</p>
+                    <p>微信：zane12580</p>
+                </div>
+                <div class="footer-section">
+                    <h3>友情链接</h3>
+                    <p><a href="#">StyleSwift</a></p>
+                    <p><a href="#">LLMGPUHelper</a></p>
+                </div>
+            </div>
+        </footer>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const filterToggle = document.getElementById('filter-toggle');
+            const filterContent = document.getElementById('filter-content');
+            const applyFilter = document.getElementById('apply-filter');
+            const activeFilters = document.getElementById('active-filters');
+            const regionSelect = document.getElementById('region-select');
+            const tagSelect = document.getElementById('tag-select');
+
+            filterToggle.addEventListener('click', function() {
+                filterContent.style.display = filterContent.style.display === 'none' ? 'block' : 'none';
+                filterToggle.querySelector('.filter-icon').textContent = filterContent.style.display === 'none' ? '▼' : '▲';
+            });
+
+            applyFilter.addEventListener('click', function() {
+                activeFilters.innerHTML = '';
+                
+                if (regionSelect.value) {
+                    addFilterTag('地区', regionSelect.options[regionSelect.selectedIndex].text);
+                }
+                
+                if (tagSelect.value) {
+                    addFilterTag('标签', tagSelect.value);
+                }
+                
+                // 这里可以添加实际的筛选逻辑
+                console.log('应用筛选');
+            });
+
+            function addFilterTag(type, value) {
+                const tag = document.createElement('span');
+                tag.className = 'filter-tag';
+                tag.innerHTML = `${type}: ${value} <span class="remove-filter">✕</span>`;
+                tag.querySelector('.remove-filter').addEventListener('click', function() {
+                    tag.remove();
+                    // 这里可以添加移除筛选的逻辑
+                });
+                activeFilters.appendChild(tag);
+            }
+
+            // 添加切换逻辑
+            const contentToggle = document.getElementById('content-toggle');
+            const jobInfoSection = document.querySelector('.content-section');
+            const experiencePostsSection = document.getElementById('experience-posts');
+
+            contentToggle.addEventListener('change', function() {
+                if (this.checked) {
+                    jobInfoSection.style.display = 'none';
+                    experiencePostsSection.style.display = 'block';
+                } else {
+                    jobInfoSection.style.display = 'block';
+                    experiencePostsSection.style.display = 'none';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
